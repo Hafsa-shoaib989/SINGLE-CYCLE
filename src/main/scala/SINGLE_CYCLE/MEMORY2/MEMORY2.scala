@@ -11,11 +11,17 @@ class DataMem ( ) extends Module {
         val mem_write = Input ( Bool () )
         val dataOut = Output ( SInt ( 32.W ) )
 })
-val Sync_memory = SyncReadMem ( 32 , SInt ( 32.W ) )
+val imem1 = Mem ( 1024 , SInt ( 32.W ) )
 
-when ( io.mem_write ) {
-    Sync_memory.write ( io.addr , io.dataIn )
+io.dataOut := 0.S
+
+when ( io.mem_write === 1.B) {
+    imem1.write ( io.addr , io.dataIn )
+
 }
-io.dataOut := Sync_memory.read ( io.addr , io.mem_read )
+when ( io.mem_read === 1.B ) {
+    io.dataOut := imem1.read ( io.addr )
+
+}
 }
 

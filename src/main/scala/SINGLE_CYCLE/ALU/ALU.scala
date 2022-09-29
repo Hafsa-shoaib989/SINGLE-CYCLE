@@ -9,6 +9,8 @@ object ALUOP1_ {
     val ALU_ADDI = 0.U(5.W)
     val ALU_SW = 0.U(5.W)
     val ALU_LW = 0.U(5.W)
+    val ALU_LUI = 0.U(5.W)
+    val ALU_AUIPC = 0.U(5.W)
     val ALU_SLL = 1.U(5.W)
     val ALU_SLLI = 1.U(5.W)
     val ALU_SLT = 2.U(5.W)
@@ -25,6 +27,7 @@ object ALUOP1_ {
     val ALU_ANDI = 7.U(5.W)
     val ALU_SUB = 8.U(5.W)
     val ALU_SRA = 13.U(5.W)
+    val ALU_SRAI = 13.U(5.W)
     val ALU_JAL = 31.U(5.W)
     val ALU_JALR = 31.U(5.W)
 }
@@ -40,18 +43,16 @@ class ALU_1 extends Module with Config_ {
         val out = Output( SInt(WLEN.W) )
 })
 val out = 
-    Mux(io.alu_Op === ALU_ADD || io.alu_Op === ALU_ADDI || io.alu_Op === ALU_SW || io.alu_Op === ALU_LW, (io.in_A + io.in_B),
+    Mux(io.alu_Op === ALU_ADD || io.alu_Op === ALU_ADDI || io.alu_Op === ALU_SW || io.alu_Op === ALU_LW || io.alu_Op === ALU_LUI || io.alu_Op === ALU_AUIPC, (io.in_A + io.in_B),
     Mux(io.alu_Op === ALU_SLL || io.alu_Op === ALU_SLLI, (io.in_A.asUInt << io.in_B(18, 0).asUInt).asSInt,
     Mux(io.alu_Op === ALU_SLT || io.alu_Op === ALU_SLTI, Mux(io.in_A < io.in_B, 1.S, 0.S),
-    // Mux(io.alu_Op === ALU_SLT || io.alu_Op === ALU_SLTI, (io.in_A < io.in_B).asSInt
-    // Mux(io.alu_Op === ALU_SLTU || io.alu_Op === ALU_SLTUI, (io.in_A.asUInt < io.in_B.asUInt).asSInt,
     Mux(io.alu_Op === ALU_SLTU || io.alu_Op === ALU_SLTUI, Mux(io.in_A < io.in_B, 1.S, 0.S),
     Mux(io.alu_Op === ALU_XOR || io.alu_Op === ALU_XORI, (io.in_A ^ io.in_B),
     Mux(io.alu_Op === ALU_SRL || io.alu_Op === ALU_SRLI, (io.in_A.asUInt >> io.in_B(18, 0).asUInt).asSInt,
     Mux(io.alu_Op === ALU_OR || io.alu_Op === ALU_ORI, (io.in_A | io.in_B),
     Mux(io.alu_Op === ALU_AND || io.alu_Op === ALU_ANDI, (io.in_A & io.in_B),
     Mux(io.alu_Op === ALU_SUB, (io.in_A - io.in_B),
-    Mux(io.alu_Op === ALU_SRA, (io.in_A.asUInt >> io.in_B(18, 0).asUInt).asSInt,
+    Mux(io.alu_Op === ALU_SRA || io.alu_Op === ALU_SRAI, (io.in_A.asUInt >> io.in_B(18, 0).asUInt).asSInt,
     Mux(io.alu_Op === ALU_JAL || io.alu_Op === ALU_JALR, io.in_A, 0.S)))))))))))
 
 io.out := out

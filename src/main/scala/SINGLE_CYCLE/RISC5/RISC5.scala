@@ -64,8 +64,8 @@ InstMem1_module.io.addr := PC_module.io.out(21, 2)
 Immde_module.io.pc := PC_module.io.out.asUInt
 
 Control_module.io.opcode := InstMem1_module.io.data(6, 0)
-RegFile_module.io.rs1 := InstMem1_module.io.data(19, 15)
-RegFile_module.io.rs2 := InstMem1_module.io.data(24, 20)
+RegFile_module.io.rs1 := Mux(Control_module.io.opcode === 51.U || Control_module.io.opcode === 19.U || Control_module.io.opcode === 35.U || Control_module.io.opcode === 3.U || Control_module.io.opcode === 99.U || Control_module.io.opcode === 103.U, InstMem1_module.io.data(19, 15), 0.U )
+RegFile_module.io.rs2 := Mux(Control_module.io.opcode === 51.U || Control_module.io.opcode === 35.U || Control_module.io.opcode === 99.U, InstMem1_module.io.data(24, 20), 0.U)
 RegFile_module.io.w_reg := InstMem1_module.io.data(11, 7)
 Immde_module.io.instr := InstMem1_module.io.data
 Alu_Control_module.io.func3 := InstMem1_module.io.data(14, 12)

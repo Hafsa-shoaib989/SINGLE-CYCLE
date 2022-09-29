@@ -102,17 +102,29 @@ when ( io.opcode === 51.U ) {
     io.operand_B := 0.B
     io.extend := 0.U
     io.next_pc_sel := 3.U
-// U type    
+// U type (lui)   
+}.elsewhen ( io.opcode === 55.U ) {
+    io.mem_write := 0.B
+    io.branch := 0.B
+    io.mem_read := 0.B
+    io.reg_write := 1.B
+    io.men_to_reg := 0.B
+    io.alu_operation := 6.U
+    io.operand_A := 3.U
+    io.operand_B := 1.B
+    io.extend := 2.U
+    io.next_pc_sel := 0.U
+// U type (auipc)   
 }.elsewhen ( io.opcode === 23.U ) {
     io.mem_write := 0.B
     io.branch := 0.B
     io.mem_read := 0.B
-    io.reg_write := 0.B
+    io.reg_write := 1.B
     io.men_to_reg := 0.B
     io.alu_operation := 7.U
-    io.operand_A := 0.U
-    io.operand_B := 0.B
-    io.extend := 0.U
+    io.operand_A := 2.U
+    io.operand_B := 1.B
+    io.extend := 2.U
     io.next_pc_sel := 0.U
 
 }.otherwise {

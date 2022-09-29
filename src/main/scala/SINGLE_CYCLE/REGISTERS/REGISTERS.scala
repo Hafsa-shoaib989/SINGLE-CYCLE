@@ -9,9 +9,9 @@ class RegFile extends Module {
         val rs2 = Input ( UInt (5.W ) )
         val reg_write = Input ( Bool () )
         val w_reg = Input ( UInt (5.W ) )
-        val w_data = Input ( SInt ( 5.W ) )
-        val rdata1 = Output ( SInt ( 5.W ) )
-        val rdata2 = Output ( SInt ( 5.W ) )
+        val w_data = Input ( SInt ( 32.W ) )
+        val rdata1 = Output ( SInt ( 32.W ) )
+        val rdata2 = Output ( SInt ( 32.W ) )
 })
 val regs = Reg ( Vec ( 32 , SInt ( 32.W ) ) )
 
