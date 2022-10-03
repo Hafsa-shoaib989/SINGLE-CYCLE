@@ -8,8 +8,8 @@ class BranchControl extends Module{
     val io = IO (new Bundle {
         val fnct3 = Input ( UInt (3.W ) )
         val branch = Input ( Bool () )
-        val arg_x = Input ( SInt (4.W ) )
-        val arg_y = Input ( SInt (4.W ) )
+        val arg_x = Input ( SInt (32.W ) )
+        val arg_y = Input ( SInt (32.W ) )
         val br_taken = Output ( Bool () )
 })
 when(io.branch === 1.B){

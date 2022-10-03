@@ -13,7 +13,7 @@ class RegFile extends Module {
         val rdata1 = Output ( SInt ( 32.W ) )
         val rdata2 = Output ( SInt ( 32.W ) )
 })
-val regs = Reg ( Vec ( 32 , SInt ( 32.W ) ) )
+val regs = RegInit( VecInit( Seq.fill(32) (0.S (32.W))))
 
 io.rdata1 := Mux (( io.rs1 .orR ) , regs ( io.rs1 ) , 0.S )
 io.rdata2 := Mux (( io.rs2 .orR) , regs ( io.rs2 ) , 0.S )
