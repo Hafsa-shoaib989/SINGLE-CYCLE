@@ -1,4 +1,5 @@
-# SINGLE-CYCLE
-                                          RISC-V SINGLE CYCLE CORE
+# PASBAN 
+                                               RISC-V SINGLE CYCLE CORE
 
-                                           Designed by HAFSA SHOAIB
+                                               Designed by HAFSA SHOAIB
+   
