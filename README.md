@@ -41,7 +41,6 @@ Change the .txt file path to match your file that you created above storing your
 After setting up the MEMORY1.scala file, go inside the RV32i folder.
 ```ruby
 And enter
-```ruby
 sbt
 ```
 When the terminal changes to this type
