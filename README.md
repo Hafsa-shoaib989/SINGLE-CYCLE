@@ -4,15 +4,7 @@
 <img align='center' src="https://readme-typing-svg.demolab.com?font=Arial&size=18&pause=1000&color=8510d8&multiline=true&width=435&lines=Designed+by+HAFSA+SHOAIB" alt="Typing SVG" />
 </div>
 <br><br>
-
   
-<div align='center'><img src="https://readme-typing-svg.demolab.com?font=Arial&size=22&pause=1000&color=F7F7F7&multiline=true&width=435&lines=RISC-V+Single+Cycle+Core" alt="Typing SVG" /><br>
-<img src="https://readme-typing-svg.demolab.com?font=Arial&size=18&pause=1000&color=F7F7F7&multiline=true&width=435&lines=Designed+by+HAFSA+SHOAIB" alt="Typing SVG" />
-</div>
-<br>
-
-<img src='Single Cycle RISC-V Core.png' height=600 width=100%>
-<br>
 First of all get started by cloning this repository on your machine.
 
 ```ruby
